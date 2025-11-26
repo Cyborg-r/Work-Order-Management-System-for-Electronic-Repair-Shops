@@ -1,0 +1,163 @@
+<Window x:Class="WorkOrderManagementSystem.Views.Pages.WorkOrderDetailsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Work Order Details" Height="498" Width="394"
+        WindowStartupLocation="CenterOwner"
+        Background="#F5F5F5">
+    <Grid Margin="20">
+        <DockPanel>
+            <!-- Title -->
+            <TextBlock DockPanel.Dock="Top" 
+                       Name="TitleBlock"
+                       Text="Work Order Details" 
+                       FontSize="18" 
+                       FontWeight="Bold" 
+                       Margin="0,0,0,20"/>
+
+            <!-- Content -->
+            <ScrollViewer DockPanel.Dock="Bottom">
+                <StackPanel>
+                    <!-- Customer Section -->
+                    <Grid Margin="0,0,0,20">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel>
+                            <TextBlock Text="Customer" FontSize="12" Foreground="#999" Margin="0,0,0,5"/>
+                            <TextBlock Name="CustomerNameBlock" FontSize="14" Foreground="#333" Margin="0,0,0,5"/>
+                            <TextBlock Name="CustomerPhoneBlock" FontSize="12" Foreground="#666"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="1">
+                            <TextBlock Text="Status" FontSize="12" Foreground="#999" Margin="0,0,0,5"/>
+                            <ComboBox Name="StatusCombo" 
+                                      Padding="10,8">
+                                <ComboBoxItem>Pending</ComboBoxItem>
+                                <ComboBoxItem>In Progress</ComboBoxItem>
+                                <ComboBoxItem>Completed</ComboBoxItem>
+                            </ComboBox>
+                        </StackPanel>
+                    </Grid>
+
+                    <!-- Device Section -->
+                    <Grid Margin="0,0,0,20">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel>
+                            <TextBlock Text="Device Type" FontSize="12" Foreground="#999" Margin="0,0,0,5"/>
+                            <TextBlock Name="DeviceTypeBlock" FontSize="14" Foreground="#333" FontWeight="SemiBold"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="1">
+                            <TextBlock Text="Brand" FontSize="12" Foreground="#999" Margin="0,0,0,5"/>
+                            <TextBlock Name="BrandBlock" FontSize="14" Foreground="#333" FontWeight="SemiBold"/>
+                        </StackPanel>
+                    </Grid>
+
+                    <!-- Serial Number -->
+                    <StackPanel Margin="0,0,0,20">
+                        <TextBlock Text="Serial Number" FontSize="12" Foreground="#999" Margin="0,0,0,5"/>
+                        <TextBlock Name="SerialNumberBlock" FontSize="13" Foreground="#2196F3" FontWeight="SemiBold"/>
+                    </StackPanel>
+
+                    <!-- Issue Description -->
+                    <StackPanel Margin="0,0,0,20">
+                        <TextBlock Text="Issue Description" FontSize="12" Foreground="#999" Margin="0,0,0,5"/>
+                        <TextBlock Name="IssueBlock" FontSize="13" Foreground="#333" TextWrapping="Wrap"/>
+                    </StackPanel>
+
+                    <!-- Parts Required -->
+                    <StackPanel Margin="0,0,0,20">
+                        <TextBlock Text="Parts Required" FontSize="12" Foreground="#999" Margin="0,0,0,5"/>
+                        <TextBlock Name="PartsRequiredBlock" FontSize="13" Foreground="#333" TextWrapping="Wrap"/>
+                    </StackPanel>
+
+                    <!-- Costs Section -->
+                    <Grid Margin="0,0,0,20">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel>
+                            <TextBlock Text="Labor Cost" FontSize="12" Foreground="#999" Margin="0,0,0,5"/>
+                            <TextBlock Name="LaborCostBlock" FontSize="14" Foreground="#333" FontWeight="SemiBold"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="1">
+                            <TextBlock Text="Parts Cost" FontSize="12" Foreground="#999" Margin="0,0,0,5"/>
+                            <TextBlock Name="PartsCostBlock" FontSize="14" Foreground="#333" FontWeight="SemiBold"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="2">
+                            <TextBlock Text="Total Cost" FontSize="12" Foreground="#999" Margin="0,0,0,5"/>
+                            <TextBlock Name="TotalCostBlock" FontSize="14" Foreground="#333" FontWeight="SemiBold"/>
+                        </StackPanel>
+                    </Grid>
+
+                    <!-- Technician and Date Section -->
+                    <Grid Margin="0,0,0,20">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel>
+                            <TextBlock Text="Technician" FontSize="12" Foreground="#999" Margin="0,0,0,5"/>
+                            <ComboBox Name="TechnicianCombo" Padding="10,8"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="1">
+                            <TextBlock Text="Date Created" FontSize="12" Foreground="#999" Margin="0,0,0,5"/>
+                            <TextBlock Name="DateCreatedBlock" FontSize="13" Foreground="#333" Padding="10,8"/>
+                        </StackPanel>
+                    </Grid>
+
+                    <!-- Buttons -->
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,0">
+                        <Button Name="PrintBtn" 
+                                Content="Print" 
+                                Background="Transparent" 
+                                Foreground="#333"
+                                BorderThickness="1"
+                                BorderBrush="#DDD"
+                                Padding="20,10"
+                                Margin="0,0,10,0"
+                                Click="PrintBtn_Click"/>
+                        <Button Name="SaveBtn" 
+                                Content="Save Changes" 
+                                Background="#4CAF50" 
+                                Foreground="White" 
+                                Padding="20,10"
+                                Margin="0,0,10,0"
+                                Click="SaveBtn_Click"/>
+                        <Button Name="CloseBtn2" 
+                                Content="Close" 
+                                Background="#999" 
+                                Foreground="White" 
+                                Padding="20,10"
+                                Click="CloseBtn_Click"/>
+                    </StackPanel>
+
+                    <!-- Drop Work Order Button (Bottom Right) -->
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,15,0,0">
+                        <Button Name="DropBtn" 
+                                Content="Drop" 
+                                Background="#F44336" 
+                                Foreground="White" 
+                                Padding="12,6"
+                                FontSize="11"
+                                Click="DropBtn_Click"
+                                ToolTip="Delete this work order permanently"/>
+                    </StackPanel>
+                </StackPanel>
+            </ScrollViewer>
+        </DockPanel>
+    </Grid>
+</Window>

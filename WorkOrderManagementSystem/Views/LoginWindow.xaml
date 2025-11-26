@@ -1,0 +1,59 @@
+<Window x:Class="WorkOrderManagementSystem.Views.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Work Order Management System - Login" Height="501" Width="492"
+        WindowStartupLocation="CenterScreen"
+        Background="#F0F0F0"
+        ResizeMode="NoResize">
+	<Grid>
+		<StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="350">
+			<TextBlock Text="Work Order Management System" 
+                       FontSize="24" 
+                       FontWeight="Bold" 
+                       Foreground="#333" 
+                       TextAlignment="Center" 
+                       Margin="0,0,0,30"/>
+
+			<TextBlock Text="Login" FontSize="18" FontWeight="SemiBold" Margin="0,0,0,20"/>
+
+			<TextBlock Text="Username" FontSize="12" Margin="0,0,0,5"/>
+			<TextBox Name="UsernameTextBox" 
+                     Height="40" 
+                     Padding="10" 
+                     FontSize="13"
+                     Margin="0,0,0,15"/>
+
+			<TextBlock Text="Password" FontSize="12" Margin="0,0,0,5"/>
+			<PasswordBox Name="PasswordBox" 
+                         Height="40" 
+                         Padding="10" 
+                         FontSize="13"
+                         Margin="0,0,0,20"/>
+
+			<Button Name="LoginButton"
+                    Content="Login" 
+                    Height="40" 
+                    Background="#4CAF50" 
+                    Foreground="White" 
+                    FontSize="14"
+                    FontWeight="SemiBold"
+                    Click="LoginButton_Click"/>
+
+			<TextBlock Name="ErrorMessage" 
+                       Foreground="#F44336" 
+                       TextWrapping="Wrap" 
+                       Margin="0,20,0,0"
+                       TextAlignment="Center"/>
+
+			<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,30,0,0">
+				<TextBlock Text="Don't have an account? " Foreground="#666"/>
+				<Button Name="RegisterLink" 
+                        Content="Register here" 
+                        Background="Transparent" 
+                        Foreground="#2196F3"
+                        Click="RegisterLink_Click"
+                        Cursor="Hand"/>
+			</StackPanel>
+		</StackPanel>
+	</Grid>
+</Window>

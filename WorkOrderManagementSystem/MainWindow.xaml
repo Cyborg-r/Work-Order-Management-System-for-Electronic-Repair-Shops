@@ -1,0 +1,65 @@
+<Window x:Class="WorkOrderManagementSystem.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WorkOrderManagementSystem"
+        mc:Ignorable="d"
+        Title="Work Order Management System - Dashboard" Height="700" Width="1402"
+        WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <Style x:Key="NavButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Height" Value="45"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="Padding" Value="20,0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#555"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    
+    <DockPanel>
+        <!-- Top Menu Bar -->
+        <StackPanel DockPanel.Dock="Top" Background="#333" Height="60" Orientation="Horizontal" VerticalAlignment="Center" Margin="20,0">
+            <TextBlock Text="Work Order Management System" 
+                       Foreground="White" 
+                       FontSize="18" 
+                       FontWeight="Bold" 
+                       VerticalAlignment="Center" 
+                       Margin="0,0,30,0"/>
+            <TextBlock Name="UserGreeting" 
+                       Foreground="White" 
+                       FontSize="12" 
+                       VerticalAlignment="Center"
+                       Margin="0,0,30,0"/>
+            <Button Name="LogoutButton" 
+                    Content="Logout" 
+                    Background="#F44336" 
+                    Foreground="White" 
+                    Padding="15,10"
+                    Click="LogoutButton_Click"/>
+        </StackPanel>
+
+        <!-- Side Navigation -->
+        <StackPanel DockPanel.Dock="Left" Background="#444" Width="200" Margin="0,20,0,0">
+            <Button Name="DashboardBtn" Content="Dashboard" Style="{StaticResource NavButtonStyle}" Click="NavButton_Click"/>
+            <Button Name="CustomersBtn" Content="Customers" Style="{StaticResource NavButtonStyle}" Click="NavButton_Click"/>
+            <Button Name="WorkOrdersBtn" Content="Work Orders" Style="{StaticResource NavButtonStyle}" Click="NavButton_Click"/>
+            <Button Name="HistoryBtn" Content="History" Style="{StaticResource NavButtonStyle}" Click="NavButton_Click"/>
+            <Button Name="AnalyticsBtn" Content="Analytics" Style="{StaticResource NavButtonStyle}" Click="NavButton_Click"/>
+            <Button Name="UsersBtn" Content="Users" Style="{StaticResource NavButtonStyle}" Click="NavButton_Click" Visibility="Collapsed"/>
+        </StackPanel>
+
+        <!-- Content Area -->
+        <Grid DockPanel.Dock="Right" Background="#F5F5F5">
+            <Frame Name="ContentFrame" NavigationUIVisibility="Hidden"/>
+        </Grid>
+    </DockPanel>
+</Window>
