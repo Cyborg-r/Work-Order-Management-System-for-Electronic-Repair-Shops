@@ -31,6 +31,7 @@ namespace WorkOrderManagementSystem.Views.Pages
         {
             try
             {
+                // Get all completed work orders (including archived ones older than 1 day)
                 var completedOrders = await _workOrderService.GetWorkOrdersByStatusAsync("Completed");
                 _allHistory.Clear();
                 _history.Clear();
@@ -54,6 +55,8 @@ namespace WorkOrderManagementSystem.Views.Pages
                         Diagnosis = wo.IssueDescription,
                         TechnicianName = technician != null ? $"{technician.FirstName} {technician.LastName}" : "Unassigned",
                         TechnicianId = wo.TechnicianId,
+                        CreatedAt = wo.CreatedAt,
+                        CreatedAtDisplay = wo.CreatedAt.ToString("yyyy-MM-dd"),
                         CompletedAt = wo.CompletedAt,
                         CompletedAtDisplay = wo.CompletedAt?.ToString("yyyy-MM-dd") ?? "N/A",
                         TurnaroundDays = (int)turnaroundDays,
@@ -246,6 +249,8 @@ namespace WorkOrderManagementSystem.Views.Pages
                             Diagnosis = wo.IssueDescription,
                             TechnicianName = technician != null ? $"{technician.FirstName} {technician.LastName}" : "Unassigned",
                             TechnicianId = wo.TechnicianId,
+                            CreatedAt = wo.CreatedAt,
+                            CreatedAtDisplay = wo.CreatedAt.ToString("yyyy-MM-dd"),
                             CompletedAt = wo.CompletedAt,
                             CompletedAtDisplay = wo.CompletedAt?.ToString("yyyy-MM-dd") ?? "N/A",
                             TurnaroundDays = (int)turnaroundDays,

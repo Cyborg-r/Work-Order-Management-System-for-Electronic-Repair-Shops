@@ -35,11 +35,11 @@ namespace WorkOrderManagementSystem.Views.Pages
                 List<WorkOrder> workOrders;
                 if (statusFilter != null && statusFilter != "All")
                 {
-                    workOrders = await _workOrderService.GetWorkOrdersByStatusAsync(statusFilter);
+                    workOrders = await _workOrderService.GetActiveWorkOrdersByStatusAsync(statusFilter);
                 }
                 else
                 {
-                    workOrders = await _workOrderService.GetAllWorkOrdersAsync();
+                    workOrders = await _workOrderService.GetActiveWorkOrdersAsync();
                 }
 
                 _workOrders.Clear();

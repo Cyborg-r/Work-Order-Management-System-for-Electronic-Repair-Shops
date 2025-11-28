@@ -25,6 +25,7 @@ namespace WorkOrderManagementSystem.Views.Pages
             LastNameBox.Text = _user.LastName;
             EmailBox.Text = _user.Email;
             RoleComboBox.SelectedItem = _user.Role;
+            StatusComboBox.SelectedItem = _user.IsActive ? "Active" : "Inactive";
         }
 
         private async void SaveBtn_Click(object sender, RoutedEventArgs e)
@@ -44,11 +45,18 @@ namespace WorkOrderManagementSystem.Views.Pages
                     return;
                 }
 
+                if (StatusComboBox.SelectedItem == null)
+                {
+                    MessageBox.Show("Please select a status.", "Validation Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
                 // Update user data
                 _user.FirstName = FirstNameBox.Text.Trim();
                 _user.LastName = LastNameBox.Text.Trim();
                 _user.Email = EmailBox.Text.Trim();
                 _user.Role = (RoleComboBox.SelectedItem as ComboBoxItem)?.Content.ToString() ?? "Staff";
+                _user.IsActive = StatusComboBox.SelectedItem?.ToString() == "Active";
 
                 // Update password if provided
                 if (!string.IsNullOrWhiteSpace(PasswordBox.Password))

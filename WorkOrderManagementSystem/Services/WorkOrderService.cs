@@ -27,6 +27,35 @@ namespace WorkOrderManagementSystem.Services
             }
         }
 
+        public async Task<List<WorkOrder>> GetActiveWorkOrdersAsync()
+        {
+            try
+            {
+                var oneDayAgo = DateTime.UtcNow.AddDays(-1);
+                
+                // Get all work orders that are either:
+                // 1. Not completed
+                // 2. Completed but within the last 1 day
+                var filter = Builders<WorkOrder>.Filter.Or(
+                    Builders<WorkOrder>.Filter.Ne(w => w.Status, "Completed"),
+                    Builders<WorkOrder>.Filter.And(
+                        Builders<WorkOrder>.Filter.Eq(w => w.Status, "Completed"),
+                        Builders<WorkOrder>.Filter.Gte(w => w.CompletedAt, oneDayAgo)
+                    )
+                );
+
+                return await _mongoDbService.WorkOrders
+                    .Find(filter)
+                    .SortByDescending(w => w.CreatedAt)
+                    .ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error retrieving active work orders: {ex.Message}");
+                return new List<WorkOrder>();
+            }
+        }
+
         public async Task<WorkOrder?> GetWorkOrderByIdAsync(ObjectId id)
         {
             try
@@ -84,6 +113,36 @@ namespace WorkOrderManagementSystem.Services
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine($"Error retrieving work orders by status: {ex.Message}");
+                return new List<WorkOrder>();
+            }
+        }
+
+        public async Task<List<WorkOrder>> GetActiveWorkOrdersByStatusAsync(string status)
+        {
+            try
+            {
+                var oneDayAgo = DateTime.UtcNow.AddDays(-1);
+                
+                if (status == "Completed")
+                {
+                    // For completed status, only show those within the last 1 day
+                    return await _mongoDbService.WorkOrders
+                        .Find(w => w.Status == status && w.CompletedAt >= oneDayAgo)
+                        .SortByDescending(w => w.CreatedAt)
+                        .ToListAsync();
+                }
+                else
+                {
+                    // For other statuses, show all
+                    return await _mongoDbService.WorkOrders
+                        .Find(w => w.Status == status)
+                        .SortByDescending(w => w.CreatedAt)
+                        .ToListAsync();
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error retrieving active work orders by status: {ex.Message}");
                 return new List<WorkOrder>();
             }
         }
@@ -201,7 +260,7 @@ namespace WorkOrderManagementSystem.Services
                     { "CompletedOrders", completedOrders.Count },
                     { "PendingOrders", allWorkOrders.Count(w => w.Status == "Pending") },
                     { "InProgressOrders", allWorkOrders.Count(w => w.Status == "In Progress") },
-                    { "TotalRevenue", allWorkOrders.Sum(w => w.TotalCost) },
+                    { "TotalRevenue", completedOrders.Sum(w => w.TotalCost) },
                     { "AverageTurnaroundTime", completedOrders.Any() ? TimeSpan.FromSeconds(completedOrders.Average(w => (w.CompletedAt - w.CreatedAt)?.TotalSeconds ?? 0)) : TimeSpan.Zero },
                     { "CompletionRate", allWorkOrders.Any() ? (completedOrders.Count / (double)allWorkOrders.Count) * 100 : 0 }
                 };

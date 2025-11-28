@@ -46,13 +46,14 @@
                        TextAlignment="Center"/>
 
 			<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,30,0,0">
-				<TextBlock Text="Don't have an account? " Foreground="#666"/>
-				<Button Name="RegisterLink" 
-                        Content="Register here" 
+				<TextBlock Text="Forgot your password? " Foreground="#666"/>
+				<Button Name="ForgotPasswordLink" 
+                        Content="Click here" 
                         Background="Transparent" 
                         Foreground="#2196F3"
-                        Click="RegisterLink_Click"
-                        Cursor="Hand"/>
+                        Click="ForgotPasswordLink_Click"
+                        Cursor="Hand"
+                        Padding="0"/>
 			</StackPanel>
 		</StackPanel>
 	</Grid>

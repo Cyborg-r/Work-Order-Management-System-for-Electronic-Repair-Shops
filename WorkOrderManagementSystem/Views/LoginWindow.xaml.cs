@@ -36,11 +36,15 @@ namespace WorkOrderManagementSystem.Views
             }
         }
 
-        private void RegisterLink_Click(object sender, RoutedEventArgs e)
+        private void ForgotPasswordLink_Click(object sender, RoutedEventArgs e)
         {
-            RegisterWindow registerWindow = new(_authService);
-            registerWindow.Show();
-            Close();
+            MessageBox.Show(
+                "Your password reset request has been submitted to the system administrator.\n\n" +
+                "The administrator will review your request and send you a new password via email shortly.",
+                "Password Reset Request Submitted",
+                MessageBoxButton.OK,
+                MessageBoxImage.Information
+            );
         }
     }
 }

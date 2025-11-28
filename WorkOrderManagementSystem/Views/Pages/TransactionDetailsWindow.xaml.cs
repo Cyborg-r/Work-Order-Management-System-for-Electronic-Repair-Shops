@@ -74,7 +74,8 @@ namespace WorkOrderManagementSystem.Views.Pages
                     TechnicianBlock.Text = "Unassigned";
                 }
 
-                // Set date completed
+                // Set dates
+                DateCreatedBlock.Text = _workOrder.CreatedAt.ToString("yyyy-MM-dd HH:mm:ss");
                 DateCompletedBlock.Text = _workOrder.CompletedAt?.ToString("yyyy-MM-dd") ?? "N/A";
 
                 // Calculate duration

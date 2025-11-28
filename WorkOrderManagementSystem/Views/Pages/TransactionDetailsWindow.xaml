@@ -1,7 +1,7 @@
 <Window x:Class="WorkOrderManagementSystem.Views.Pages.TransactionDetailsWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Transaction Details" Height="616" Width="414"
+        Title="Transaction Details" Height="616" Width="617"
         WindowStartupLocation="CenterOwner"
         Background="#F5F5F5">
 	<Grid Margin="20">
@@ -115,12 +115,24 @@
 						</StackPanel>
 
 						<StackPanel Grid.Column="1">
-							<TextBlock Text="Date Completed" FontSize="12" Foreground="#999" Margin="0,0,0,5"/>
-							<TextBlock Name="DateCompletedBlock" FontSize="13" Foreground="#333"/>
+							<TextBlock Text="Date Created" FontSize="12" Foreground="#999" Margin="0,0,0,5"/>
+							<TextBlock Name="DateCreatedBlock" FontSize="13" Foreground="#333"/>
 						</StackPanel>
 
 						<StackPanel Grid.Column="2">
-							<TextBlock Text="Duration" FontSize="12" Foreground="#999" Margin="0,0,0,5"/>
+							<TextBlock Text="Date Completed" FontSize="12" Foreground="#999" Margin="0,0,0,5"/>
+							<TextBlock Name="DateCompletedBlock" FontSize="13" Foreground="#333"/>
+						</StackPanel>
+					</Grid>
+
+					<!-- Duration Section -->
+					<Grid Margin="0,0,0,20">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="*"/>
+						</Grid.ColumnDefinitions>
+
+						<StackPanel>
+							<TextBlock Text="Duration (Time to Complete)" FontSize="12" Foreground="#999" Margin="0,0,0,5"/>
 							<TextBlock Name="DurationBlock" FontSize="13" Foreground="#333"/>
 						</StackPanel>
 					</Grid>

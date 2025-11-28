@@ -108,13 +108,14 @@
                             <DataGridTextColumn Header="Device" Binding="{Binding DeviceDisplay}" Width="120"/>
                             <DataGridTextColumn Header="Issue" Binding="{Binding Diagnosis}" Width="150"/>
                             <DataGridTextColumn Header="Technician" Binding="{Binding TechnicianName}" Width="120"/>
+                            <DataGridTextColumn Header="Created Date" Binding="{Binding CreatedAtDisplay}" Width="110"/>
                             <DataGridTextColumn Header="Completed Date" Binding="{Binding CompletedAtDisplay}" Width="120"/>
                             <DataGridTextColumn Header="Duration" Binding="{Binding DurationDisplay}" Width="80"/>
                             <DataGridTextColumn Header="Total Cost" Binding="{Binding TotalCost}" Width="100"/>
                             <DataGridTemplateColumn Header="Actions" Width="100">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Button Content="?? View" 
+                                        <Button Content="View" 
                                                 Background="Transparent" 
                                                 Foreground="#2196F3"
                                                 Click="ViewBtn_Click"
