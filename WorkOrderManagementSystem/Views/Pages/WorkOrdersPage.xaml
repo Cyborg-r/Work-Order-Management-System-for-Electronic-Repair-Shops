@@ -6,24 +6,26 @@
         <DockPanel>
             <!-- Header -->
             <StackPanel DockPanel.Dock="Top" Margin="0,0,0,20">
-                <StackPanel Orientation="Horizontal" Margin="0,0,0,15">
-                    <StackPanel VerticalAlignment="Top">
+                <DockPanel LastChildFill="False" Margin="0,0,0,15">
+                    <!-- Title on the left -->
+                    <StackPanel DockPanel.Dock="Left" VerticalAlignment="Top">
                         <TextBlock Text="Work Orders" FontSize="28" FontWeight="Bold" Margin="0,0,0,5"/>
                         <TextBlock Text="Track and manage repair jobs" FontSize="14" Foreground="#666"/>
                     </StackPanel>
-                    <Button Name="AddWorkOrderBtn" 
-                            Content="+ Create Work Order" 
-                            Background="#222" 
-                            Foreground="White" 
-                            Padding="20,12"
-                            FontSize="14"
-                            FontWeight="SemiBold"
-                            Click="AddWorkOrderBtn_Click"
-                            VerticalAlignment="Top"
-                            Margin="0,0,0,0"
-                            HorizontalAlignment="Right"/>
-                </StackPanel>
 
+                    <!-- Button on the right -->
+                    <Button Name="AddWorkOrderBtn" 
+                DockPanel.Dock="Right"
+                Content="+ Create Work Order" 
+                Background="#222" 
+                Foreground="White" 
+                Padding="20,12"
+                FontSize="14"
+                FontWeight="SemiBold"
+                Click="AddWorkOrderBtn_Click"
+                VerticalAlignment="Top"/>
+                </DockPanel>
+                
                 <!-- Filter Tabs -->
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,15">
                     <Button Name="AllOrdersBtn" 

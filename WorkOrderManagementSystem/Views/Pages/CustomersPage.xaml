@@ -6,20 +6,26 @@
         <DockPanel>
             <!-- Header -->
             <StackPanel DockPanel.Dock="Top" Margin="0,0,0,20">
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Margin="0,0,0,15">
-                    <StackPanel VerticalAlignment="Top">
-                        <TextBlock Text="Customer Management" FontSize="28" FontWeight="Bold" Margin="0,0,0,5"/>
-                        <TextBlock Text="Manage customer information and repair history" FontSize="14" Foreground="#666"/>
-                    </StackPanel>
-                    <Button Name="AddCustomerBtn" 
-                            Content="+ Add Customer" 
-                            Background="#222" 
-                            Foreground="White" 
-                            Padding="20,12"
-                            FontSize="14"
-                            FontWeight="SemiBold"
-                            Click="AddCustomerBtn_Click"
-                            VerticalAlignment="Top"/>
+                <StackPanel DockPanel.Dock="Top" Margin="0,0,0,20">
+                    <DockPanel LastChildFill="False">
+                        <!-- Title on the left -->
+                        <StackPanel DockPanel.Dock="Left" VerticalAlignment="Top">
+                            <TextBlock Text="Customer Management" FontSize="28" FontWeight="Bold" Margin="0,0,0,5"/>
+                            <TextBlock Text="Manage customer information and repair history" FontSize="14" Foreground="#666"/>
+                        </StackPanel>
+
+                        <!-- Button on the right -->
+                        <Button Name="AddCustomerBtn" 
+                DockPanel.Dock="Right"
+                Content="+ Add Customer" 
+                Background="#222" 
+                Foreground="White" 
+                Padding="20,12"
+                FontSize="14"
+                FontWeight="SemiBold"
+                Click="AddCustomerBtn_Click"
+                VerticalAlignment="Top"/>
+                    </DockPanel>
                 </StackPanel>
 
                 <!-- Search Box -->
